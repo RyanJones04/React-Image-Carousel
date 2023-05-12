@@ -1,23 +1,28 @@
-import logo from './logo.svg';
+import {useState} from 'react';
 import './App.css';
+import { images } from './images';
+
 
 function App() {
+  const [imgIndex, setImgIndex] = useState(0);
+
+  function handleNext(){
+    setImgIndex(imgIndex + 1);
+  }
+
+  function handlePrevious(){
+    setImgIndex(imgIndex - 1);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {images.map((image, index) =>
+        imgIndex === index && (
+          <img src={image} alt="not found" className='App-images'/>
+        )
+      )}
+      <button className="right-arrow" onClick={handleNext}>Next Slide</button>
+      <button className="left-arrow" onClick={handlePrevious}>Previous Slide</button>
     </div>
   );
 }
