@@ -7,11 +7,11 @@ function App() {
   const [imgIndex, setImgIndex] = useState(0);
 
   function handleNext(){
-    setImgIndex(imgIndex + 1);
+    setImgIndex(imgIndex === images.length - 1 ? 0 : imgIndex + 1);
   }
 
   function handlePrevious(){
-    setImgIndex(imgIndex - 1);
+    setImgIndex(imgIndex === 0 ? images.length -1 : imgIndex - 1);
   }
 
   return (
